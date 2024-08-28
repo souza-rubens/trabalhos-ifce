@@ -39,7 +39,7 @@ end
 endmodule
 
 //DEMUX
-module demux4x1(
+module demux2x4(
 	input logic [1:0] sel2,
     input logic in,
     output logic [3:0] o2
@@ -65,7 +65,7 @@ module banco(
     logic [3:0] demux_out;
     logic [7:0] mux_out0, mux_out1;
 
-demux4x1 demux_inst(.sel2(add_wr), .in(wr_en), .o2(demux_out));
+demux2x4 demux_inst(.sel2(add_wr), .in(wr_en), .o2(demux_out));
 regPIPO reg0 (.clk(clk), .rst(rst), .wr_en(demux_out[0]), .din(wr_data), .dout(reg_data[0]));
 regPIPO reg1 (.clk(clk), .rst(rst), .wr_en(demux_out[1]), .din(wr_data), .dout(reg_data[1]));
 regPIPO reg2 (.clk(clk), .rst(rst), .wr_en(demux_out[2]), .din(wr_data), .dout(reg_data[2]));
